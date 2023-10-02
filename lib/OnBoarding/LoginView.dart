@@ -20,6 +20,18 @@ class LoginView extends StatelessWidget {
         ),
         ),
       ),
+
+      Padding(
+        padding:EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 16),
+        child: Flexible (child: SizedBox(width: 400, child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Input Password',
+          ),
+        ),
+        ),
+        ),
+      ),
     ]);
 
     Scaffold scaffold = Scaffold (
