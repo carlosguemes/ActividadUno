@@ -5,18 +5,27 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          ],
+
+    Column columna = Column(children: [
+      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+      Text("Bienvenido a Kyty Login", style: TextStyle(fontSize: 25)),
+      Padding(
+        padding:EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 16),
+        child: Flexible (child: SizedBox(width: 400, child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Input User',
+          ),
+        ),
+        ),
         ),
       ),
+    ]);
 
+    Scaffold scaffold = Scaffold (
+      body: columna,
     );
+
+    return scaffold;
   }
 }
