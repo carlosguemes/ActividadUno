@@ -4,16 +4,20 @@ import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
 
+  late BuildContext _context;
+
   void onClickAceptar(){
 
   }
 
   void onClickRegistrar(){
-
+    Navigator.of(_context).popAndPushNamed('/registerview');
   }
 
   @override
   Widget build(BuildContext context) {
+
+    _context = context;
 
     AppBar appBar = AppBar(
       centerTitle: true,
@@ -51,7 +55,7 @@ class LoginView extends StatelessWidget {
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
           child: TextButton(onPressed: onClickAceptar,
-              child: Text("Aceptar")),),
+              child: Text("Aceptar")), ),
 
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
           child: TextButton(onPressed: onClickRegistrar,
