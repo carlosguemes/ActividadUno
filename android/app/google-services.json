@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865670703415",
+    "project_id": "actividadunocarlosguemes",
+    "storage_bucket": "actividadunocarlosguemes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865670703415:android:6c3ec2fdb51b77c32612b2",
+        "android_client_info": {
+          "package_name": "com.example.actividad_uno"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS-JT0-BugxdXdYwAG5knEfpbjcrhK6D4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
