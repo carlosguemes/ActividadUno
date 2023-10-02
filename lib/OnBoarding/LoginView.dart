@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
 
+  void onClickAceptar(){
+
+  }
+
+  void onClickRegistrar(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -42,14 +50,11 @@ class LoginView extends StatelessWidget {
 
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: TextButton(onPressed: () {
-
-          }, child: Text("Aceptar")),),
+          child: TextButton(onPressed: onClickAceptar,
+              child: Text("Aceptar")),),
 
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: TextButton(onPressed: (){
-
-          },
+          child: TextButton(onPressed: onClickRegistrar,
               child: Text("Registro")),)
       ],)
 
@@ -58,6 +63,7 @@ class LoginView extends StatelessWidget {
     Scaffold scaffold = Scaffold (
       appBar: appBar,
       body: columna,
+      backgroundColor: Colors.blueGrey,
     );
 
     return scaffold;
