@@ -17,6 +17,27 @@ class RegisterView extends StatelessWidget{
         ),
       ),
 
+      Padding(
+        padding:EdgeInsets.symmetric(horizontal: 500, vertical: 5),
+        child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Input Password',
+          ),
+          obscureText: true,
+        ),
+      ),
+
+      Padding(
+        padding:EdgeInsets.symmetric(horizontal: 500, vertical: 5),
+        child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Repite Password',
+          ),
+          obscureText: true,
+        ),
+      ),
 
     ]);
 
