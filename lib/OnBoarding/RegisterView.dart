@@ -1,6 +1,41 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatelessWidget{
+
+  late BuildContext _context;
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController repasswordController = TextEditingController();
+
+  void onClickAceptarRegistrar() async {
+    if (passwordController.text == repasswordController.text) {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: usernameController.text,
+          password: passwordController.text,
+        );
+        Navigator.of(_context).popAndPushNamed('/loginview');
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          print('The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          print('The account already exists for that email.');
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+    else{
+      ScaffoldMessenger.of(_context).showSnackBar(snackBar);
+    }
+  }
+
+  void onClickCancelarRegistrar(){
+    Navigator.of(_context).popAndPushNamed('/loginview');
+  }
+
   @override
   Widget build(BuildContext context) {
     Column columna = Column(children: [
@@ -14,6 +49,7 @@ class RegisterView extends StatelessWidget{
             border: OutlineInputBorder(),
             hintText: 'Input User',
           ),
+            controller: usernameController,
         ),
       ),
 
@@ -24,6 +60,7 @@ class RegisterView extends StatelessWidget{
             border: OutlineInputBorder(),
             hintText: 'Input Password',
           ),
+          controller: passwordController,
           obscureText: true,
         ),
       ),
@@ -35,16 +72,17 @@ class RegisterView extends StatelessWidget{
             border: OutlineInputBorder(),
             hintText: 'Repite Password',
           ),
+          controller: repasswordController,
           obscureText: true,
         ),
       ),
 
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: TextButton(onPressed: (){}, child: Text("Aceptar")),),
+          child: TextButton(onPressed: onClickAceptarRegistrar, child: Text("Aceptar")),),
 
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: TextButton(onPressed: (){}, child: Text("Cancelar")),)
+          child: TextButton(onPressed: onClickCancelarRegistrar, child: Text("Cancelar")),)
       ],)
 
     ]);
