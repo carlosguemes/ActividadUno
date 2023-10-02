@@ -39,6 +39,20 @@ class LoginView extends StatelessWidget {
         ),
         ),
       ),
+
+      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Padding(padding: EdgeInsets.symmetric(vertical: 10),
+          child: TextButton(onPressed: () {
+
+          }, child: Text("Aceptar")),),
+
+        Padding(padding: EdgeInsets.symmetric(vertical: 10),
+          child: TextButton(onPressed: (){
+
+          },
+              child: Text("Registro")),)
+      ],)
+
     ]);
 
     Scaffold scaffold = Scaffold (
