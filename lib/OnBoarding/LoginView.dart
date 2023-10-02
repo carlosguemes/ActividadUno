@@ -1,3 +1,4 @@
+import 'package:actividad_uno/App.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,12 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    AppBar appBar = AppBar(
+      centerTitle: true,
+      backgroundColor: Colors.black,
+      title: const Text('Login'),
+    );
 
     Column columna = Column(children: [
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
@@ -35,6 +42,7 @@ class LoginView extends StatelessWidget {
     ]);
 
     Scaffold scaffold = Scaffold (
+      appBar: appBar,
       body: columna,
     );
 
