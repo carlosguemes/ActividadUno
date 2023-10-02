@@ -39,9 +39,22 @@ class RegisterView extends StatelessWidget{
         ),
       ),
 
+      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Padding(padding: EdgeInsets.symmetric(vertical: 10),
+          child: TextButton(onPressed: (){}, child: Text("Aceptar")),),
+
+        Padding(padding: EdgeInsets.symmetric(vertical: 10),
+          child: TextButton(onPressed: (){}, child: Text("Cancelar")),)
+      ],)
+
     ]);
 
-    return columna;
+    Scaffold scaffold = Scaffold(
+      body: columna,
+      backgroundColor: Colors.orangeAccent,
+    );
+
+    return scaffold;
     }
 
 }
