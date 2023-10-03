@@ -1,4 +1,5 @@
 import 'package:actividad_uno/App.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,20 @@ class LoginView extends StatelessWidget {
   TextEditingController tecUsername = TextEditingController();
   TextEditingController tecPassword = TextEditingController();
 
-  void onClickAceptar(){
-
+  void onClickAceptar() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: tecUsername.text,
+        password: tecPassword.text,
+      );
+      Navigator.of(_context).popAndPushNamed('/homeview');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
   }
 
   void onClickRegistrar(){
