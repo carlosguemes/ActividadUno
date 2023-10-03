@@ -1,3 +1,4 @@
+import 'package:actividad_uno/OnBoarding/HomeView.dart';
 import 'package:actividad_uno/OnBoarding/RegisterView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
       routes: {
         '/loginview':(context) => LoginView(),
         '/registerview':(context) => RegisterView(),
+        '/homeview':(context) => HomeView(),
       },
       initialRoute: '/loginview',
     );
