@@ -1,3 +1,4 @@
+import 'package:actividad_uno/KTPaddingText/PaddingClass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -47,47 +48,23 @@ class RegisterView extends StatelessWidget{
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
         Text('Bienvenido a Kyty Register', style: TextStyle(fontSize: 25)),
         Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-        Padding(
-         padding:EdgeInsets.symmetric(horizontal: 500, vertical: 5),
-          child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Input User',
-          ),
-            controller: usernameController,
-        ),
-      ),
 
-      Padding(
-        padding:EdgeInsets.symmetric(horizontal: 500, vertical: 5),
-        child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Input Password',
-          ),
-          controller: passwordController,
-          obscureText: true,
-        ),
-      ),
+        PaddingClass(controlador: usernameController, labelText: 'Escribe tu usuario', esContrasenya: false),
 
-      Padding(
-        padding:EdgeInsets.symmetric(horizontal: 500, vertical: 5),
-        child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Repite Password',
-          ),
-          controller: repasswordController,
-          obscureText: true,
-        ),
-      ),
+        PaddingClass(controlador: passwordController, labelText: 'Escribe tu contraseña', esContrasenya: true),
+
+        PaddingClass(controlador: repasswordController, labelText: 'Repite tu contraseña', esContrasenya: true),
 
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: TextButton(onPressed: onClickAceptarRegistrar, child: Text("Aceptar")),),
+          child: TextButton(onPressed: onClickAceptarRegistrar,
+              style: TextButton.styleFrom(foregroundColor: Colors.black),
+              child: Text("Aceptar")),),
 
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: TextButton(onPressed: onClickCancelarRegistrar, child: Text("Cancelar")),)
+          child: TextButton(onPressed: onClickCancelarRegistrar,
+              style: TextButton.styleFrom(foregroundColor: Colors.black),
+              child: Text("Cancelar")),)
       ],)
 
     ]);
