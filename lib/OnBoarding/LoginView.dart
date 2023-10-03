@@ -2,9 +2,14 @@ import 'package:actividad_uno/App.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../KTPaddingText/PaddingClass.dart';
+
 class LoginView extends StatelessWidget {
 
   late BuildContext _context;
+
+  TextEditingController tecUsername = TextEditingController();
+  TextEditingController tecPassword = TextEditingController();
 
   void onClickAceptar(){
 
@@ -28,37 +33,21 @@ class LoginView extends StatelessWidget {
     Column columna = Column(children: [
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       Text("Bienvenido a Kyty Login", style: TextStyle(fontSize: 25)),
-      Padding(
-        padding:EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 16),
-        child: Flexible (child: SizedBox(width: 400, child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Input User',
-          ),
-        ),
-        ),
-        ),
-      ),
+      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
 
-      Padding(
-        padding:EdgeInsets.symmetric(horizontal: Checkbox.width, vertical: 16),
-        child: Flexible (child: SizedBox(width: 400, child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Input Password',
-          ),
-        ),
-        ),
-        ),
-      ),
+      PaddingClass(controlador: tecUsername, labelText: 'Escribe tu usuario', esContrasenya: false),
+
+      PaddingClass(controlador: tecPassword, labelText: 'Escribe tu contraseña', esContrasenya: true),
 
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
           child: TextButton(onPressed: onClickAceptar,
+              style: TextButton.styleFrom(foregroundColor: Colors.black),
               child: Text("Aceptar")), ),
 
         Padding(padding: EdgeInsets.symmetric(vertical: 10),
           child: TextButton(onPressed: onClickRegistrar,
+              style: TextButton.styleFrom(foregroundColor: Colors.black),
               child: Text("Registro")),)
       ],)
 
