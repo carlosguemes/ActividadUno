@@ -9,6 +9,10 @@ class RegisterView extends StatelessWidget{
   TextEditingController passwordController = TextEditingController();
   TextEditingController repasswordController = TextEditingController();
 
+  SnackBar snackBar = SnackBar(
+    content: Text('Las contraseñas han de ser iguales'),
+  );
+
   void onClickAceptarRegistrar() async {
     if (passwordController.text == repasswordController.text) {
       try {
@@ -38,6 +42,7 @@ class RegisterView extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    _context = context;
     Column columna = Column(children: [
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
         Text('Bienvenido a Kyty Register', style: TextStyle(fontSize: 25)),
