@@ -44,6 +44,13 @@ class RegisterView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     _context = context;
+
+    AppBar appBar = AppBar(
+      centerTitle: true,
+      backgroundColor: Colors.black,
+      title: const Text('Registro'),
+    );
+
     Column columna = Column(children: [
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
         Text('Bienvenido a Kyty Register', style: TextStyle(fontSize: 25)),
@@ -72,6 +79,7 @@ class RegisterView extends StatelessWidget{
     Scaffold scaffold = Scaffold(
       body: columna,
       backgroundColor: Colors.orangeAccent,
+      appBar: appBar
     );
 
     return scaffold;
