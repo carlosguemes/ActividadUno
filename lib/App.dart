@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'OnBoarding/LoginView.dart';
+import 'Splash/SplashView.dart';
 import 'main.dart';
 
 class App extends StatelessWidget {
