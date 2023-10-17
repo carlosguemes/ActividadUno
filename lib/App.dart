@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'OnBoarding/LoginView.dart';
+import 'OnBoarding/PerfilView.dart';
 import 'Splash/SplashView.dart';
 import 'main.dart';
 
@@ -18,6 +19,7 @@ class App extends StatelessWidget {
         '/registerview':(context) => RegisterView(),
         '/homeview':(context) => HomeView(),
         '/splashview':(context) => SplashView(),
+        '/perfilview':(context) => PerfilView()
       },
       initialRoute: '/splashview',
     );
