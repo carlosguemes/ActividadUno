@@ -10,4 +10,22 @@ class FbPost{
     required this.cuerpo,
   });
 
+  factory FbPost.fromFirestore(
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions? options,
+      ) {
+    final data = snapshot.data();
+    return FbPost(
+      titulo: data?['Titulo'],
+      cuerpo: data?['Cuerpo'],
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (titulo != null) "Nombre": titulo,
+      if (cuerpo != null) "Edad": cuerpo,
+    };
+  }
+
 }
