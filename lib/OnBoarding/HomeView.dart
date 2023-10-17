@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../FirestoreObjects/FbPost.dart';
+import '../KTPaddingText/GridBuilderCell.dart';
+import '../KTPaddingText/PostCellView.dart';
 
 class HomeView extends StatefulWidget {
 
@@ -12,6 +14,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   late BuildContext _context;
+
+  bool bIsList = false;
 
   void onClickVolver() {
     FirebaseAuth.instance.signOut();
@@ -38,9 +42,35 @@ class _HomeViewState extends State<HomeView> {
       setState(() {
         post.add(querySnap.docs[i].data());
       });
-
     }
-}
+  }
+
+  Widget? creadorDeItemLista(BuildContext context, int index){
+    return PostCellView(sText: post[index].titulo,
+        dFontSize: 20,
+        mcColores: Colors.red);
+  }
+
+  Widget creadorDeSeparadorLista(BuildContext context, int index){
+    return Divider(color: Colors.purpleAccent);
+  }
+
+  Widget creadorCeldas(BuildContext context, int index){
+    return GridBuilderCell(post: post);
+  }
+
+  Widget celdasOLista(bool isList) {
+    if (isList) {
+      return ListView.separated(
+        padding: EdgeInsets.all(8),
+        itemCount: post.length,
+        itemBuilder: creadorDeItemLista,
+        separatorBuilder: creadorDeSeparadorLista,
+      );
+    } else {
+      return creadorCeldas(context, post.length);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
