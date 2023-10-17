@@ -25,7 +25,7 @@ class PerfilView extends StatelessWidget{
   }
 
   void onClickCancelar(){
-
+    Navigator.of(_context).popAndPushNamed('/loginview');
   }
 
   @override
