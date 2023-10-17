@@ -1,3 +1,4 @@
+import 'package:actividad_uno/KTPaddingText/BottomMenu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +73,17 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
+  void onBottomMenuPressed(int indice) {
+    setState(() {
+      if (indice == 0){
+        bIsList = true;
+      }
+      else if (indice == 1){
+        bIsList = false;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,6 +92,7 @@ class _HomeViewState extends State<HomeView> {
         child:
         celdasOLista(bIsList),
       ),
+      bottomNavigationBar: BottomMenu(events: onBottomMenuPressed),
     );
   }
 }
