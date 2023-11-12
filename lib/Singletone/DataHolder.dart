@@ -26,6 +26,14 @@ class DataHolder{
     reference.add(post);
   }
 
+  void saveSelectedPostInCache() async{
+    if (selectedPost!=null) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('titulo', selectedPost!.titulo);
+      prefs.setString('cuerpo', selectedPost!.cuerpo);
+    }
+  }
+
   Future<FbPost?> initCachedFbPost() async{
     if (selectedPost!=null) return selectedPost;
     SharedPreferences prefs = await SharedPreferences.getInstance();
