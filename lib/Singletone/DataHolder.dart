@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../FirestoreObjects/FbPost.dart';
@@ -6,6 +7,7 @@ class DataHolder{
   FbPost? selectedPost;
 
   static final DataHolder _dataHolder = new DataHolder._internal();
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
   factory DataHolder(){
     return _dataHolder;
@@ -13,6 +15,15 @@ class DataHolder{
 
   DataHolder._internal(){
     initCachedFbPost();
+  }
+
+  void crearPostEnFB(FbPost post){
+    CollectionReference<FbPost> reference = db
+        .collection("Posts")
+        .withConverter(fromFirestore: FbPost.fromFirestore,
+        toFirestore: (FbPost post, _) => post.toFirestore());
+
+    reference.add(post);
   }
 
   Future<FbPost?> initCachedFbPost() async{
