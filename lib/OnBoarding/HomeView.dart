@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../FirestoreObjects/FbPost.dart';
 import '../KTPaddingText/GridBuilderCell.dart';
 import '../KTPaddingText/PostCellView.dart';
+import '../Singletone/DataHolder.dart';
 
 class HomeView extends StatefulWidget {
 
@@ -32,6 +33,12 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
   }
 
+  void onItemListaClicked(int index){
+    DataHolder().selectedPost = post[index];
+    DataHolder().saveSelectedPostInCache();
+    Navigator.of(context).pushNamed('/postview');
+  }
+
   void descargarPosts() async{
     CollectionReference<FbPost> reference = db
         .collection("Posts")
@@ -49,7 +56,10 @@ class _HomeViewState extends State<HomeView> {
   Widget? creadorDeItemLista(BuildContext context, int index){
     return PostCellView(sText: post[index].titulo,
         dFontSize: 20,
-        mcColores: Colors.red);
+        mcColores: Colors.red,
+        iPosicion: index,
+        onItemListaClickedFunction: onItemListaClicked,
+    );
   }
 
   Widget creadorDeSeparadorLista(BuildContext context, int index){
