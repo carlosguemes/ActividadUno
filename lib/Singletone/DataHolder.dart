@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../FirestoreObjects/FbPost.dart';
 
 class DataHolder{
+  String sNombre = "Kyty";
   FbPost? selectedPost;
 
   static final DataHolder _dataHolder = new DataHolder._internal();
