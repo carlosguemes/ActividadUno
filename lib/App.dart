@@ -12,7 +12,6 @@ import 'OnBoarding/PerfilView.dart';
 import 'OnBoarding/PhoneLoginView.dart';
 import 'OnBoarding/PostView.dart';
 import 'Splash/SplashView.dart';
-import 'main.dart';
 
 class App extends StatelessWidget {
 

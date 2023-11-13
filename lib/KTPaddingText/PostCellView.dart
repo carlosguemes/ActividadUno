@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Singletone/PlatformAdmin.dart';
+
 class PostCellView extends StatelessWidget{
 
   final String sText;
@@ -18,12 +20,13 @@ class PostCellView extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    String ruta = "assets/" + PlatformAdmin().getNombrePlataforma() + "/logo_kyty.png";
     return InkWell(
       child: Container(
           color: mcColores,
           child: Row(
             children: [
-              Image.asset("resources/logo_kyty.png", width: 70,
+              Image.asset(ruta, width: 70,
                   height: 70),
               Text(sText, style: TextStyle(fontSize: dFontSize)),
               TextButton(onPressed: null,
