@@ -49,7 +49,7 @@ class DataHolder{
     imagen??="";
 
     print("SHARED PREFERENCES ---> "+ titulo);
-    selectedPost=FbPost(titulo: titulo, cuerpo: cuerpo);
+    selectedPost=FbPost(titulo: titulo, cuerpo: cuerpo, imagen: imagen);
 
     return selectedPost;
   }
