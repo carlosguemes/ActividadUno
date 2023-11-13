@@ -17,8 +17,8 @@ class _GestionViewState extends State<GestionView> {
   }
 
   void checkSession() async{
-    await Future.delayed(Duration(seconds: 2));
-      Navigator.of(context).popAndPushNamed("/splashview");
+    await Future.delayed(Duration(seconds: 4));
+    Navigator.of(context).popAndPushNamed("/splashview");
   }
 
   @override
@@ -32,8 +32,9 @@ class _GestionViewState extends State<GestionView> {
 
     Column columna = Column(children: [
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-      Text("Bienvenido a Gestión de Kyty", style: TextStyle(fontSize: 25)),
-      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text("Bienvenido a Gestión de Kyty", style: TextStyle(fontSize: 25)),
+      ],)
     ]);
 
     Scaffold scaffold = Scaffold (
