@@ -4,6 +4,7 @@ import 'package:actividad_uno/OnBoarding/RegisterView.dart';
 import 'package:actividad_uno/Singletone/PlatformAdmin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'OnBoarding/HomeView2.dart';
 import 'OnBoarding/LoginView.dart';
@@ -19,7 +20,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (PlatformAdmin().isWebPlatform()) {
-      return MaterialApp(
+      return MaterialApp(theme:ThemeData(
+        textTheme: GoogleFonts.offsideTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
         routes: {
           '/loginview': (context) => LoginView(),
           '/registerview': (context) => RegisterView(),
@@ -35,6 +40,11 @@ class App extends StatelessWidget {
 
       else{
         return MaterialApp(
+          theme:ThemeData(
+            textTheme: GoogleFonts.ubuntuCondensedTextTheme(
+              Theme.of(context).textTheme,
+            ),
+          ),
             routes: {
             '/loginview': (context) => PhoneLoginView(),
             '/registerview': (context) => RegisterView(),
