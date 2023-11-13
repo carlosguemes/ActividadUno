@@ -17,7 +17,7 @@ class _GestionViewState extends State<GestionView> {
   }
 
   void checkSession() async{
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 3));
     Navigator.of(context).popAndPushNamed("/splashview");
   }
 

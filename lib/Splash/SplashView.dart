@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../Singletone/PlatformAdmin.dart';
+
 class SplashView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -37,9 +39,11 @@ class _SplashViewState extends State<SplashView>{
   Widget build(BuildContext context) {
     // TODO: implement build
 
+    String ruta = "assets/" + PlatformAdmin().getNombrePlataforma() + "/logo_kyty.png";
+
     Column column = Column(
         children: [
-          Image.asset("resources/logo_kyty.png", width: 300, height: 300, fit: BoxFit.fill,),
+          Image.asset(ruta, width: 300, height: 300, fit: BoxFit.fill,),
           Padding(padding: EdgeInsets.symmetric(vertical: 30)),
           CircularProgressIndicator(),
         ]

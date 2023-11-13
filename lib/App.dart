@@ -42,7 +42,7 @@ class App extends StatelessWidget {
             '/perfilview': (context) => PerfilView(),
             '/postview': (context) => PostView()
             },
-            initialRoute: '/homeview',
+            initialRoute: '/splashview',
         );
       }
     }

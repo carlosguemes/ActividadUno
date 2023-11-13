@@ -9,6 +9,22 @@ class PlatformAdmin{
 
   PlatformAdmin();
 
+  String getNombrePlataforma(){
+    String nombre;
+
+    if (isWebPlatform()){
+      nombre = "web";
+    }
+    else if (isAndroidPlatform()){
+      nombre = "android";
+    }
+    else
+      nombre = "ios";
+
+    return nombre;
+
+  }
+
   double getScreenWidth(BuildContext context){
     dSCREEN_WIDTH=MediaQuery.of(context).size.width;
     return dSCREEN_WIDTH;
