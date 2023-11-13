@@ -27,7 +27,7 @@ class App extends StatelessWidget {
           '/postview': (context) => PostView(),
           '/gestionview': (context) => GestionView()
         },
-        initialRoute: '/homeview',
+        initialRoute: '/gestionview',
       );
     }
 

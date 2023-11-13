@@ -33,7 +33,7 @@ class _GestionViewState extends State<GestionView> {
     Column columna = Column(children: [
       Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text("Bienvenido a Gestión de Kyty", style: TextStyle(fontSize: 25)),
+        Text("Bienvenido a Gestión de Kyty", style: TextStyle(fontSize: 25, fontFamily: 'Agbalumo'),),
       ],)
     ]);
 
