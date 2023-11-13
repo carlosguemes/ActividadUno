@@ -33,7 +33,6 @@ class PostCellView extends StatelessWidget{
       ),
       onTap: () {
         onItemListaClickedFunction!(iPosicion);
-        //print("Callate manin " + iPosicion.toString());
       },
     );
   }

@@ -67,7 +67,11 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget creadorCeldas(BuildContext context, int index){
-    return GridBuilderCell(post: post);
+    return GridBuilderCell(
+        post: post,
+        iPosicion: index,
+        onItemListaClickedFunction: onItemListaClicked,
+    );
   }
 
   Widget celdasOLista(bool isList) {
