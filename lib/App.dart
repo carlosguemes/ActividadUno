@@ -5,6 +5,7 @@ import 'package:actividad_uno/Singletone/PlatformAdmin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'OnBoarding/HomeView2.dart';
 import 'OnBoarding/LoginView.dart';
 import 'OnBoarding/PerfilView.dart';
 import 'OnBoarding/PhoneLoginView.dart';
@@ -37,7 +38,7 @@ class App extends StatelessWidget {
             routes: {
             '/loginview': (context) => PhoneLoginView(),
             '/registerview': (context) => RegisterView(),
-            '/homeview': (context) => HomeView(),
+            '/homeview': (context) => HomeView2(),
             '/splashview': (context) => SplashView(),
             '/perfilview': (context) => PerfilView(),
             '/postview': (context) => PostView()

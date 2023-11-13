@@ -1,3 +1,4 @@
+import 'package:actividad_uno/Singletone/GeolocAdmin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,6 +7,7 @@ import '../FirestoreObjects/FbPost.dart';
 class DataHolder{
   String sNombre = "Kyty";
   FbPost? selectedPost;
+  GeolocAdmin geolocAdmin = GeolocAdmin();
 
   static final DataHolder _dataHolder = new DataHolder._internal();
   FirebaseFirestore db = FirebaseFirestore.instance;

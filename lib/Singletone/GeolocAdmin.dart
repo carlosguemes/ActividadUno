@@ -1,4 +1,4 @@
-/*import 'dart:async';
+import 'dart:async';
 
 import 'package:geolocator/geolocator.dart';
 
@@ -50,4 +50,4 @@ class GeolocAdmin{
           print(position == null ? 'Unknown' : '${position.latitude.toString()}, ${position.longitude.toString()}');
         });
   }
-}*/
+}
