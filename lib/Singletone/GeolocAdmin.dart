@@ -40,14 +40,20 @@ class GeolocAdmin{
     return await Geolocator.getCurrentPosition();
   }
 
-  void registrarCambiosLoc(){
+  Future<Position> registrarCambiosLoc() async {
     final LocationSettings locationSettings = LocationSettings(
       accuracy: LocationAccuracy.high,
       distanceFilter: 0,
     );
-    StreamSubscription<Position> positionStream = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
-            (Position? position) {
-          print(position == null ? 'Unknown' : '${position.latitude.toString()}, ${position.longitude.toString()}');
-        });
+    try {
+      Position position = await Geolocator.getCurrentPosition();
+      print(position == null
+          ? 'Unknown'
+          : '${position.latitude.toString()}, ${position.longitude.toString()}');
+      return position;
+    } catch (e) {
+      print('Error al obtener la posición: $e');
+      throw Exception('Error al obtener la posición');
+    }
   }
 }

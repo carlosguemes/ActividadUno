@@ -32,7 +32,7 @@ class DrawerClass extends StatelessWidget{
           ),
           ListTile(
             leading: Icon(Icons.ad_units),
-            title: const Text('Apartado 2'),
+            title: const Text('Mostrar temperatura'),
             onTap: () {
               onItemTap!(1);
             },
