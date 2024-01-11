@@ -30,7 +30,7 @@ class FirebaseAdmin {
     return querySnapshot.docs
         .where((doc) =>
     (doc['Titulo'] as String).contains(searchValue) ||
-        (doc['Usuario'] as String).contains(searchValue))
+        (doc['Usuarios'] as String).contains(searchValue))
         .map((doc) => doc.data() as Map<String, dynamic>)
         .toList();
   }

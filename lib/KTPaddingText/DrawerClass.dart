@@ -45,6 +45,14 @@ class DrawerClass extends StatelessWidget{
               onItemTap!(2);
             },
           ),
+
+          ListTile(
+            leading: Icon(Icons.ad_units),
+            title: const Text('Mostrar post por nombre'),
+            onTap: () {
+              onItemTap!(3);
+            },
+          ),
         ],
       ),
     );
