@@ -120,7 +120,6 @@ class _HomeViewState extends State<HomeView> {
 
         double temperatura = await DataHolder().admin.pedirTemperaturasEn(currentPosition.latitude, currentPosition.longitude);
 
-
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -152,6 +151,55 @@ class _HomeViewState extends State<HomeView> {
             return AlertDialog(
               title: Text('Error'),
               content: Text('Error al obtener la temperatura'),
+              actions: [
+                TextButton(
+                  child: Text('Aceptar'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
+
+    else if (indice == 2){
+      try {
+        String nombre = await DataHolder().admin.getPilotosF1();
+
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Información'),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Piloto: $nombre'),
+
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Aceptar'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Error al obtener el piloto'),
               actions: [
                 TextButton(
                   child: Text('Aceptar'),

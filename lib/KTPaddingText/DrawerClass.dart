@@ -37,6 +37,14 @@ class DrawerClass extends StatelessWidget{
               onItemTap!(1);
             },
           ),
+
+          ListTile(
+            leading: Icon(Icons.ad_units),
+            title: const Text('Mostrar piloto Formula 1 aleatorio'),
+            onTap: () {
+              onItemTap!(2);
+            },
+          ),
         ],
       ),
     );
