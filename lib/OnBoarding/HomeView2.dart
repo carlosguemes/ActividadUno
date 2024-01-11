@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../FirestoreObjects/FbPost.dart';
+import '../KTPaddingText/DrawerClass.dart';
 import '../KTPaddingText/GridBuilderCell.dart';
 import '../KTPaddingText/PostCellView.dart';
 import '../Singletone/DataHolder.dart';
 import '../Singletone/GeolocAdmin.dart';
+import 'LoginView.dart';
 
 class HomeView2 extends StatefulWidget {
 
@@ -107,6 +109,16 @@ class _HomeViewState2 extends State<HomeView2> {
     });
   }
 
+  void eventoDrawerClass(int indice){
+    if (indice == 0){
+      FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushAndRemoveUntil (
+        MaterialPageRoute (builder: (BuildContext context) => LoginView()),
+        ModalRoute.withName('/loginview'),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +128,8 @@ class _HomeViewState2 extends State<HomeView2> {
         celdasOLista(bIsList),
       ),
       bottomNavigationBar: BottomMenu(events: onBottomMenuPressed),
+
+      drawer: DrawerClass(onItemTap: eventoDrawerClass),
     );
   }
 }

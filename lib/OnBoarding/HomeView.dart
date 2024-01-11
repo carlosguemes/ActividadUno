@@ -4,9 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../FirestoreObjects/FbPost.dart';
+import '../KTPaddingText/DrawerClass.dart';
 import '../KTPaddingText/GridBuilderCell.dart';
 import '../KTPaddingText/PostCellView.dart';
 import '../Singletone/DataHolder.dart';
+import 'LoginView.dart';
 
 class HomeView extends StatefulWidget {
 
@@ -98,6 +100,16 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
+  void eventoDrawerClass(int indice){
+    if (indice == 0){
+      FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushAndRemoveUntil (
+        MaterialPageRoute (builder: (BuildContext context) => LoginView()),
+        ModalRoute.withName('/loginview'),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +119,8 @@ class _HomeViewState extends State<HomeView> {
         celdasOLista(bIsList),
       ),
       bottomNavigationBar: BottomMenu(events: onBottomMenuPressed),
+
+      drawer: DrawerClass(onItemTap: eventoDrawerClass),
     );
   }
 }
