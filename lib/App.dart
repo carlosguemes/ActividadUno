@@ -35,7 +35,7 @@ class App extends StatelessWidget {
           '/gestionview': (context) => GestionView(),
           '/mapaview': (context) => MapaView()
         },
-        initialRoute: '/homeview',
+        initialRoute: '/loginview',
       );
     }
 
@@ -55,7 +55,7 @@ class App extends StatelessWidget {
             '/postview': (context) => PostView(),
               '/mapaview': (context) => MapaView()
             },
-            initialRoute: '/homeview',
+            initialRoute: '/loginview',
         );
       }
     }
