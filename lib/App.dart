@@ -19,7 +19,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (PlatformAdmin().isWebPlatform()) {
-      return MaterialApp(theme:ThemeData(
+      return MaterialApp(debugShowCheckedModeBanner: false, theme:ThemeData(
         textTheme: GoogleFonts.offsideTextTheme(
           Theme.of(context).textTheme,
         ),
@@ -38,7 +38,7 @@ class App extends StatelessWidget {
     }
 
       else{
-        return MaterialApp(
+        return MaterialApp(debugShowCheckedModeBanner: false,
           theme:ThemeData(
             textTheme: GoogleFonts.ubuntuCondensedTextTheme(
               Theme.of(context).textTheme,
@@ -47,7 +47,7 @@ class App extends StatelessWidget {
             routes: {
             '/loginview': (context) => PhoneLoginView(),
             '/registerview': (context) => RegisterView(),
-            '/homeview': (context) => HomeView2(),
+            '/homeview': (context) => HomeView(),
             '/splashview': (context) => SplashView(),
             '/perfilview': (context) => PerfilView(),
             '/postview': (context) => PostView()

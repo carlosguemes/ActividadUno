@@ -115,198 +115,247 @@ class _HomeViewState extends State<HomeView> {
     }
 
     else if (indice == 1){
-      try {
-        Position currentPosition = await DataHolder().geolocAdmin.registrarCambiosLoc();
-
-        double temperatura = await DataHolder().admin.pedirTemperaturasEn(currentPosition.latitude, currentPosition.longitude);
-
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Información'),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('La temperatura actual es de: $temperatura'),
-
-                ],
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Aceptar'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      } catch (e) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Error'),
-              content: Text('Error al obtener la temperatura'),
-              actions: [
-                TextButton(
-                  child: Text('Aceptar'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      }
+      
     }
+  }
 
-    else if (indice == 2){
-      try {
-        String nombre = await DataHolder().admin.getPilotosF1();
+  Future <void> pedirTemperatura() async{
+    try {
+      Position currentPosition = await DataHolder().geolocAdmin.registrarCambiosLoc();
 
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Información'),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Piloto: $nombre'),
-
-                ],
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Aceptar'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      } catch (e) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Error'),
-              content: Text('Error al obtener el piloto'),
-              actions: [
-                TextButton(
-                  child: Text('Aceptar'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      }
-    }
-
-    else if (indice == 3){
-      TextEditingController _searchController = TextEditingController();
+      double temperatura = await DataHolder().admin.pedirTemperaturasEn(currentPosition.latitude, currentPosition.longitude);
 
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Buscar Post por Título'),
+            title: Text('Información'),
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    hintText: 'Ingrese el título a buscar',
-                    contentPadding: EdgeInsets.all(16.0),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    String searchValue = _searchController.text.trim();
-                    if (searchValue.isNotEmpty) {
-                      Navigator.of(context).pop(); // Cerrar el diálogo de búsqueda
+                Text('La temperatura actual es de: $temperatura'),
 
-                      List<Map<String, dynamic>> searchResults =
-                      await DataHolder().fbAdmin.searchPostsByTitle(searchValue);
-
-                      if (searchResults.isNotEmpty) {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text('Resultados de la Búsqueda'),
-                              content: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  for (var result in searchResults)
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Título: ${result['Titulo']}'),
-                                      ],
-                                    ),
-                                ],
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: Text('Aceptar'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text('Resultados de la Búsqueda'),
-                              content: Text('No se encontraron posts con el título proporcionado.'),
-                              actions: [
-                                TextButton(
-                                  child: Text('Aceptar'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
-                    }
-                  },
-                  child: Text('Buscar'),
-                ),
               ],
             ),
+            actions: [
+              TextButton(
+                child: Text('Aceptar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Error al obtener la temperatura'),
+            actions: [
+              TextButton(
+                child: Text('Aceptar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
           );
         },
       );
     }
   }
 
+  Future<void> getPilotoF1() async{
+    try {
+      String nombre = await DataHolder().admin.getPilotosF1();
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Información'),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Piloto: $nombre'),
+
+              ],
+            ),
+            actions: [
+              TextButton(
+                child: Text('Aceptar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Error al obtener el piloto'),
+            actions: [
+              TextButton(
+                child: Text('Aceptar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
+  Future<void> buscarPorTitulo() async{
+    TextEditingController _searchController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Buscar Post por Título'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Ingrese el título a buscar',
+                  contentPadding: EdgeInsets.all(16.0),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  String searchValue = _searchController.text.trim();
+                  if (searchValue.isNotEmpty) {
+                    Navigator.of(context).pop(); // Cerrar el diálogo de búsqueda
+
+                    List<Map<String, dynamic>> searchResults =
+                    await DataHolder().fbAdmin.searchPostsByTitle(searchValue);
+
+                    if (searchResults.isNotEmpty) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Resultados de la Búsqueda'),
+                            content: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                for (var result in searchResults)
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Título: ${result['Titulo']}'),
+                                    ],
+                                  ),
+                              ],
+                            ),
+                            actions: [
+                              TextButton(
+                                child: Text('Aceptar'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Resultados de la Búsqueda'),
+                            content: Text('No se encontraron posts con el título proporcionado.'),
+                            actions: [
+                              TextButton(
+                                child: Text('Aceptar'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  }
+                },
+                child: Text('Buscar'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(title: Text("Kyty"),),
+      appBar: AppBar(
+        title: Text("Actividad1"),
+        actions: [
+          PopupMenuButton(
+            onSelected: (indice) {
+              switch (indice) {
+                case 'apiTiempo':
+                  pedirTemperatura();
+                  break;
+                case 'apiPiloto':
+                  getPilotoF1();
+                  break;
+                case 'buscaTitulo':
+                  buscarPorTitulo();
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem(
+                value: 'apiTiempo',
+                child: ListTile(
+                  leading: Icon(Icons.sunny_snowing),
+                  title: Text('Temperatura'),
+                ),
+              ),
+              PopupMenuItem(
+                value: 'apiPiloto',
+                child: ListTile(
+                  leading: Icon(Icons.drive_eta),
+                  title: Text('Piloto aleatorio F1'),
+                ),
+              ),
+              PopupMenuItem(
+                value: 'buscaTitulo',
+                child: ListTile(
+                  leading: Icon(Icons.search),
+                  title: Text('Buscar por título'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: Center(
         child:
         celdasOLista(bIsList),

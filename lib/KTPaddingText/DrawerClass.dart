@@ -30,27 +30,14 @@ class DrawerClass extends StatelessWidget{
               onItemTap!(0);
             },
           ),
+
           ListTile(
-            leading: Icon(Icons.ad_units),
-            title: const Text('Mostrar temperatura'),
+            leading: Icon(Icons.map),
+            selectedColor: Colors.blue,
+            selected: true,
+            title: const Text('Mapa'),
             onTap: () {
               onItemTap!(1);
-            },
-          ),
-
-          ListTile(
-            leading: Icon(Icons.ad_units),
-            title: const Text('Mostrar piloto Formula 1 aleatorio'),
-            onTap: () {
-              onItemTap!(2);
-            },
-          ),
-
-          ListTile(
-            leading: Icon(Icons.ad_units),
-            title: const Text('Mostrar post por nombre'),
-            onTap: () {
-              onItemTap!(3);
             },
           ),
         ],
