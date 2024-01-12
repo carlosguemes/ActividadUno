@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import '../FirestoreObjects/FbUsuario.dart';
 
 class PerfilView extends StatelessWidget{
@@ -15,7 +16,7 @@ class PerfilView extends StatelessWidget{
   void onClickAceptar(){
 
     FbUsuario usuario = FbUsuario(nombre: tecUsername.text,
-        edad: int.parse(tecEdad.text), altura: 0, colorPelo: "Rubio");
+        edad: int.parse(tecEdad.text), altura: 0, colorPelo: "Rubio", geoloc: GeoPoint(0, 0));
 
     String uidUsuario = FirebaseAuth.instance.currentUser!.uid;
 

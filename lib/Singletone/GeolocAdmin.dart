@@ -63,8 +63,7 @@ class GeolocAdmin{
   Future<void> agregarUbicacionEnFirebase(GeoPoint ubicacion) async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid;
-      await FirebaseFirestore.instance.collection('Ubicacion').doc(uid).set({
-        'Nombre': uid,
+      await FirebaseFirestore.instance.collection('Usuarios').doc(uid).set({
         'Localizacion': ubicacion,
       });
     } catch (e) {
@@ -89,14 +88,14 @@ class GeolocAdmin{
       double latOffset = radius / 110.574;
       double lonOffset = radius / (111.32 * cos(center.latitude * pi / 180));
 
-      QuerySnapshot result = await FirebaseFirestore.instance.collection('Ubicacion')
+      QuerySnapshot result = await FirebaseFirestore.instance.collection('Usuarios')
           .where('Localizacion', isGreaterThan: GeoPoint(center.latitude - latOffset, center.longitude - lonOffset))
           .where('Localizacion', isLessThan: GeoPoint(center.latitude + latOffset, center.longitude + lonOffset))
           .get();
 
       // Itera sobre los documentos y agrega los idUser a la lista
       result.docs.forEach((doc) {
-        usersInRange.add(doc['idUser']);
+        usersInRange.add(doc['Nombre']);
       });
     } catch (e) {
       print('Error al obtener usuarios en rango: $e');

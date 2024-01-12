@@ -35,7 +35,7 @@ class DrawerClass extends StatelessWidget{
             leading: Icon(Icons.map),
             selectedColor: Colors.blue,
             selected: true,
-            title: const Text('Mapa'),
+            title: const Text('Mostrar nombre de usuarios en rango de 5km'),
             onTap: () {
               onItemTap!(1);
             },

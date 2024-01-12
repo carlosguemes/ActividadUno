@@ -1,7 +1,9 @@
 
+import 'package:actividad_uno/FirestoreObjects/FbUsuario.dart';
 import 'package:actividad_uno/Singletone/FirebaseAdmin.dart';
 import 'package:actividad_uno/Singletone/GeolocAdmin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../FirestoreObjects/FbPost.dart';
@@ -13,6 +15,7 @@ class DataHolder{
   GeolocAdmin geolocAdmin = GeolocAdmin();
   Admin admin = Admin();
   FirebaseAdmin fbAdmin = FirebaseAdmin();
+  FbUsuario? usuario;
 
   static final DataHolder _dataHolder = new DataHolder._internal();
   FirebaseFirestore db = FirebaseFirestore.instance;

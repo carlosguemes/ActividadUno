@@ -8,6 +8,12 @@ class FirebaseAdmin {
   FirebaseFirestore db = FirebaseFirestore.instance;
   FbUsuario? usuario;
 
+  void actualizarPerfilUsuario(FbUsuario usuario) async {
+    //Crear documento con ID NUESTRO (o proporsionado por nosotros)
+    String uidUsuario = FirebaseAuth.instance.currentUser!.uid;
+    await db.collection("Usuarios").doc(uidUsuario).set(usuario.toFirestore());
+  }
+
   Future<FbUsuario?> loadFbUsuario() async {
     String uid = FirebaseAuth.instance.currentUser!.uid;
     DocumentReference<FbUsuario> ref = db.collection("Usuarios")
