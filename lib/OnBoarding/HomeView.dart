@@ -115,7 +115,7 @@ class _HomeViewState extends State<HomeView> {
     }
 
     else if (indice == 1){
-      
+      Navigator.of(context).popAndPushNamed('/mapaview');
     }
   }
 

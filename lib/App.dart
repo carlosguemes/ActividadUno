@@ -1,5 +1,6 @@
 import 'package:actividad_uno/OnBoarding/GestionView.dart';
 import 'package:actividad_uno/OnBoarding/HomeView.dart';
+import 'package:actividad_uno/OnBoarding/MapaView.dart';
 import 'package:actividad_uno/OnBoarding/RegisterView.dart';
 import 'package:actividad_uno/Singletone/PlatformAdmin.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,8 @@ class App extends StatelessWidget {
           '/splashview': (context) => SplashView(),
           '/perfilview': (context) => PerfilView(),
           '/postview': (context) => PostView(),
-          '/gestionview': (context) => GestionView()
+          '/gestionview': (context) => GestionView(),
+          '/mapaview': (context) => MapaView()
         },
         initialRoute: '/homeview',
       );
@@ -50,7 +52,8 @@ class App extends StatelessWidget {
             '/homeview': (context) => HomeView(),
             '/splashview': (context) => SplashView(),
             '/perfilview': (context) => PerfilView(),
-            '/postview': (context) => PostView()
+            '/postview': (context) => PostView(),
+              '/mapaview': (context) => MapaView()
             },
             initialRoute: '/homeview',
         );
