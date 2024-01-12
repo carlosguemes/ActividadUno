@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:js_interop';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
