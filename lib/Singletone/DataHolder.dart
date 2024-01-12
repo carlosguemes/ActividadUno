@@ -1,6 +1,8 @@
+import 'package:actividad_uno/FirestoreObjects/FbLoc.dart';
 import 'package:actividad_uno/Singletone/FirebaseAdmin.dart';
 import 'package:actividad_uno/Singletone/GeolocAdmin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../FirestoreObjects/FbPost.dart';
@@ -12,6 +14,7 @@ class DataHolder{
   GeolocAdmin geolocAdmin = GeolocAdmin();
   Admin admin = Admin();
   FirebaseAdmin fbAdmin = FirebaseAdmin();
+  FbLoc? fbLoc;
 
   static final DataHolder _dataHolder = new DataHolder._internal();
   FirebaseFirestore db = FirebaseFirestore.instance;
@@ -58,6 +61,21 @@ class DataHolder{
     selectedPost=FbPost(titulo: titulo, cuerpo: cuerpo, imagen: imagen);
 
     return selectedPost;
+  }
+
+  Future<FbLoc?> loadFbUsuario() async{
+    String uid=FirebaseAuth.instance.currentUser!.uid;
+    print("UID DE DESCARGA loadFbLoc------------->>>> ${uid}");
+    DocumentReference<FbLoc> ref=db.collection("Ubicacion")
+        .doc(uid)
+        .withConverter(fromFirestore: FbLoc.fromFirestore,
+      toFirestore: (FbLoc usuario, _) => usuario.toFirestore(),);
+
+
+    DocumentSnapshot<FbLoc> docSnap=await ref.get();
+    print("docSnap DE DESCARGA loadFbLoc------------->>>> ${docSnap.data()}");
+    fbLoc=docSnap.data();
+    return fbLoc;
   }
 
 
