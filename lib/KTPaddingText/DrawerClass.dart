@@ -40,6 +40,16 @@ class DrawerClass extends StatelessWidget{
               onItemTap!(1);
             },
           ),
+
+          ListTile(
+            leading: Icon(Icons.map_outlined),
+            selectedColor: Colors.blue,
+            selected: true,
+            title: const Text('Mostrar mapa'),
+            onTap: () {
+              onItemTap!(2);
+            },
+          ),
         ],
       ),
     );

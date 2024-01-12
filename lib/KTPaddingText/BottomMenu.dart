@@ -14,7 +14,7 @@ class BottomMenu extends StatelessWidget {
         children: [
           TextButton(onPressed: () => events!(0), child: Icon(Icons.list,color: Colors.pink,)),
           TextButton(onPressed: () => events!(1), child: Icon(Icons.grid_view,color: Colors.pink,)),
-          TextButton(onPressed: () => events!(2), child: Icon(Icons.map,color: Colors.pink,))
+          IconButton(onPressed: () => events!(2), icon: Image.asset("resources/logo_kyty.png"))
         ]
     );
   }

@@ -144,6 +144,10 @@ class _HomeViewState extends State<HomeView> {
         },
       );
     }
+
+    else if (indice == 2){
+      Navigator.of(context).popAndPushNamed('/mapaview');
+    }
   }
 
   Future <void> pedirTemperatura() async{
@@ -334,7 +338,9 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-
+  void mostrarMapa(){
+    Navigator.of(context).popAndPushNamed('mapaview');
+  }
 
   @override
   Widget build(BuildContext context) {
